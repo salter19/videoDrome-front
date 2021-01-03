@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AddForm from './AddMovieForm'
 
 const _url = 'http://localhost:8080/movieDB/omdb/' 
 
