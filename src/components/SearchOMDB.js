@@ -1,3 +1,4 @@
+import './../style/SearchOMDB.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddForm from './AddMovieForm'
@@ -27,29 +28,35 @@ const SearchOMDB = () => {
   }, [title, year]);
 
   return (
-    <div>
-      <div className="ui form">
-        <div className="field">
-          <div className="search title">
-            <label>Enter Movie Title:</label>
-            <input 
-              className="input" 
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-            />
-          </div>
-          <div className="search year">
-            <label>Enter Release Year:</label>
-            <input 
-              className="input" 
-              value={year}
-              onChange={e => setYear(e.target.value)}
-            />
-          </div>
+    <div className="omdb">
+      <div className="ui segment">
+        <h4 className="ui dividing header">Add Movie To Database</h4>
+        <div className="ui form">
+          <div className="two fields">
 
+            <div className="nine wide field">
+              <label>Enter Movie Title:</label>
+              <input 
+                className="input" 
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+              />
+            </div>
+
+            <div className="one wide field"></div>
+
+            <div className="four wide field">
+              <label>Enter Release Year:</label>
+              <input 
+                className="input" 
+                value={year}
+                onChange={e => setYear(e.target.value)}
+              />
+            </div>
+
+          </div>
         </div>
       </div>
-
     </div>
 
   );
