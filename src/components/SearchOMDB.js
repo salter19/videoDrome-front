@@ -35,7 +35,7 @@ const SearchOMDB = () => {
           <div className="two fields">
 
             <div className="nine wide field">
-              <label>Enter Movie Title:</label>
+              <label>Movie Title:</label>
               <input 
                 className="input" 
                 value={title}
@@ -46,7 +46,7 @@ const SearchOMDB = () => {
             <div className="one wide field"></div>
 
             <div className="four wide field">
-              <label>Enter Release Year:</label>
+              <label>Release Year:</label>
               <input 
                 className="input" 
                 value={year}
