@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div>
       hello
-      {/* <SearchOMDB* > */}
+      {<SearchOMDB /> }
     </div>
   );
 };
