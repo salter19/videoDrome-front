@@ -1,6 +1,8 @@
 import React from 'react';
 // import Accordion from './components/Accordion';
-import SearchOMDB from './components/SearchOMDB';
+// import SearchOMDB from './components/SearchOMDB';
+// import AddMovieForm from './components/AddMovieForm';
+import Page from './components/Page';
 
 /* const items = [
   {
@@ -17,8 +19,7 @@ import SearchOMDB from './components/SearchOMDB';
 const App = () => {
   return (
     <div>
-      hello
-      {<SearchOMDB /> }
+      {<Page />}
     </div>
   );
 };
