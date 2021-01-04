@@ -15,21 +15,29 @@ import Page from './components/Page';
   }
 ]
 */
+const left = { add: 'add', get: 'get' };
 
 const App = () => {
 
   const [addition, setAddition] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
+  const [leftside, setLeftside] = useState('');
 
-  const addfromomdb = (results) => {
-    console.log('click')
+  const addclick = (results) => {
     setAddition(results);
+    setLeftside(left.add);
+  }
+
+  const searchclick = (results) => {
+    setSearchResults(results);
+    setLeftside(left.get);
   }
   
   return (
     <div>
       {<Page 
         className="page base"
-        adderclick={addfromomdb}
+        adderclick={addclick}
 
       />}
     </div>
