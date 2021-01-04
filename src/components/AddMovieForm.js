@@ -10,7 +10,7 @@ const AddForm = () => {
   return (
     <div className="add-form">
       <div className="ui segment">
-        <div className="ui form">
+        <div className="ui form" >
 
           <h4 className="ui dividing header">Add Movie to Database</h4>
 
