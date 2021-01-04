@@ -15,22 +15,22 @@ import Page from './components/Page';
   }
 ]
 */
-const left = { add: 'add', get: 'get' };
+const right = { add: 'add', get: 'get' };
 
 const App = () => {
 
   const [addition, setAddition] = useState({});
   const [searchResults, setSearchResults] = useState([]);
-  const [leftside, setLeftside] = useState('');
+  const [rightside, setRightside] = useState('');
 
   const addclick = (results) => {
     setAddition(results);
-    setLeftside(left.add);
+    setRightside(right.add);
   }
 
   const searchclick = (results) => {
     setSearchResults(results);
-    setLeftside(left.get);
+    setRightside(right.get);
   }
   
   return (
