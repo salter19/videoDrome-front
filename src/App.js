@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import Accordion from './components/Accordion';
 // import SearchOMDB from './components/SearchOMDB';
 // import AddMovieForm from './components/AddMovieForm';
@@ -17,9 +17,21 @@ import Page from './components/Page';
 */
 
 const App = () => {
+
+  const [addition, setAddition] = useState({});
+
+  const addfromomdb = (results) => {
+    console.log('click')
+    setAddition(results);
+  }
+  
   return (
     <div>
-      {<Page />}
+      {<Page 
+        className="page base"
+        adderclick={addfromomdb}
+
+      />}
     </div>
   );
 };

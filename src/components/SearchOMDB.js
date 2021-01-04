@@ -1,11 +1,11 @@
 import './../style/SearchOMDB.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import AddForm from './AddMovieForm'
 
 const _url = 'http://localhost:8080/movieDB/omdb/' 
 
-const SearchOMDB = () => {
+const SearchOMDB = ({ adderClick }) => {
 
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
@@ -13,16 +13,23 @@ const SearchOMDB = () => {
 
   const onButtonClick = () => {
     (async() => {
-
       if (title && year) {
         const { data } = await axios.get(`${_url}${title}/${year}`);
         setResults(data);
       } else if (title) {
         const { data } = await axios.get(`${_url}${title}`);
-        setResults(data);        
+        setResults(data);     
       }
     })();
-  }
+    
+  };
+
+  useEffect(() => {
+    if (results.name) {
+      adderClick(results);
+    }
+  }, [results, adderClick]);
+
 
   return (
     <div className="omdb">

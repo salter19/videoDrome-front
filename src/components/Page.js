@@ -1,9 +1,9 @@
 import './../style/Page.css';
 import React from 'react';
 import SearchOMDB from './SearchOMDB';
+import AddMovieForm from './AddMovieForm';
 
-const Page = () => {
-
+const Page = ({ adderclick }) => {
   return (
     <div className="page">
       <div className="ui container main">
@@ -17,12 +17,13 @@ const Page = () => {
           <div className="ui horizontal segments">
             <div className="ui segment left">
               <p>left</p>
-              <SearchOMDB />
-              <SearchOMDB />
+              <SearchOMDB adderClick={adderclick}/>
+              <SearchOMDB adderClick={adderclick}/>
             </div>
 
             <div className="ui segment right">
               <p>right</p>
+              <AddMovieForm />
             </div>
           </div>
         </div>
