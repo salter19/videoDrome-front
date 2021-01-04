@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const AddForm = () => {
-
-  const [title, setTitle] = useState('');
-  const [country, setCountry] = useState([]);
-  const [year, setYear] = useState('');
-
-
+const AddForm = ({ movie }) => {
+  
   return (
     <div className="add-form">
       <div className="ui segment">
@@ -18,12 +13,12 @@ const AddForm = () => {
 
             <div className="six wide field">
               <label>Title</label>
-              <input type="text" placeholder="Movie title"/>
+              <input type="text" placeholder="Movie title" defaultValue={movie.name}/>
             </div>
 
             <div className="six wide field">
               <label>Release Year</label>
-              <input type="text" placeholder="1983"/>
+              <input type="text" placeholder="1983" defaultValue={movie.year}/>
             </div>
 
           </div>
