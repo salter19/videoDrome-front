@@ -1,5 +1,5 @@
 import './../style/SearchOMDB.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 // import AddForm from './AddMovieForm'
 
@@ -10,24 +10,6 @@ const SearchOMDB = () => {
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
   const [results, setResults] = useState({});
-
-  console.log(results);
-
-  /*
-  useEffect(() => {
-    const func = async () => {
-      const { data } = await axios.get(`${_url}${title}/${year}`);
-      setResults(data);
-    };
-
-    // search for movie only if year is given
-    // TODO: add validation
-    if ( title && year.length === 4 ) {
-      func();
-    }
-
-  }, [title, year]);
-  */
 
   const onButtonClick = () => {
     (async() => {
