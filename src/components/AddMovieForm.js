@@ -53,11 +53,9 @@ const AddForm = ({ movie }) => {
               </div>
 
             </div>
-
-          </div>
-
-          
+          </div>          
         </div>
+        
         <div className="ui segment">
           <div className="button center">
             <button 
