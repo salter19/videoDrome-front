@@ -1,7 +1,19 @@
 import './../style/AddMovieForm.css'
-import React from 'react';
+import React, { useState } from 'react';
+import OneField from './subcomponents/OneField';
+//import axios from 'axios';
 
 const AddForm = ({ movie }) => {
+
+  const placeholder = ' - ';
+  const full = 'sixteen';
+  const half = 'eight';
+
+
+  const onSaveClick = () => {
+    console.log('saving...');
+  }
+
   
   return (
     <div className="add-form">
@@ -13,67 +25,31 @@ const AddForm = ({ movie }) => {
             <div className="ui internally celled grid">
 
               <div className="row">
-                <div className="sixteen wide column">
-                  <label>Title</label>
-                    <input type="text" placeholder=" - " defaultValue={movie.name}/>
-                </div>
+                {OneField(full, 'Title', placeholder, movie.name)}
               </div>
 
-              <div className="row">    
-                <div className="eight wide column">
-                  <label>Genre</label>
-                  <input type="text" placeholder=" - " defaultValue={movie.genres[0]}/>
-                </div>
-
-                <div className="eight wide column">
-                  <label>Release Year</label>
-                  <input type="text" placeholder=" - " defaultValue={movie.year}/>
-                </div>              
+              <div className="row">   
+                {OneField(half, 'Genre', placeholder, movie.genres)} 
+                {OneField(half, 'Release Year', placeholder, movie.year)}             
               </div>
 
               <div className="row">
-                <div className="sixteen wide column">
-                  <label>Director</label>
-                  <input type="text" placeholder=" - " defaultValue={movie.director[0]}/>
-                </div>
+                {OneField(full, 'Director', placeholder, movie.director)}
               </div>
 
               <div className="row">
-                <div className="sixteen wide column">
-                  <label>Actor 1</label>
-                  <input type="text" placeholder=" - " defaultValue={movie.actors[0]}/>
-                </div>
+                {OneField(half, 'Actor 1', placeholder, movie.actors[0])}
+                {OneField(half, 'Actor 2', placeholder, movie.actors[1])}
               </div>
 
-              <div className="row">
-                <div className="sixteen wide column">
-                  <label>Actor 2</label>
-                  <input type="text" placeholder=" - " defaultValue={movie.actors[1]}/>
-                </div>
+              <div className="row">  
+                {OneField(half, 'Format', 'dvd')}  
+                {OneField(half, 'Subtitles', placeholder)}             
               </div>
 
-              <div className="row">    
-                <div className="eight wide column">
-                  <label>Format</label>
-                  <input type="text" placeholder="dvd" />
-                </div>
-
-                <div className="eight wide column">
-                  <label>Subtitles</label>
-                  <input type="text" placeholder=" - " />
-                </div>              
-              </div>
-
-              <div className="row">    
-                <div className="eight wide column">
-                  <label>Country</label>
-                  <input type="text" placeholder=" - " defaultValue={movie.country[0]}/>
-                </div>
-
-                <div className="eight wide column">
-                  <label>Classification</label>
-                  <input type="text" placeholder=" - " />
-                </div>              
+              <div className="row">   
+                {OneField(half, 'Country', placeholder, movie.country)} 
+                {OneField(half, 'Classification', placeholder)}             
               </div>
 
             </div>
@@ -84,7 +60,12 @@ const AddForm = ({ movie }) => {
         </div>
         <div className="ui segment">
           <div className="button center">
-            <button className="ui button save">Save to Database</button>
+            <button 
+              className="ui button save" 
+              onClick={onSaveClick}
+            >
+              Save to Database
+            </button>
           </div>
         </div>
       </div>
