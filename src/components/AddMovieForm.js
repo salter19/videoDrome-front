@@ -38,7 +38,9 @@ const AddForm = ({ movie }) => {
     console.log('saving...');
     console.log(addition);
     const post = await axios.post(`http://localhost:8080/movieDB/`, addition);
-    post ? console.log('done!') : console.log('...');
+    if (post) {
+      alert('done saving:\n' + addition.name);
+    };
   }
 
   const onInput = (value, title) => {
