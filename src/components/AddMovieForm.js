@@ -27,7 +27,6 @@ const AddForm = ({ movie }) => {
     director: movie.director,
     country: movie.country,
     sub : movie.sub,
-    sub2: movie.sub2,
     format: movie.format,
     format2: movie.format,
     actors: movie.actors,
