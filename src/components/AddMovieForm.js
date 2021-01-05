@@ -34,8 +34,6 @@ const AddForm = ({ movie }) => {
   });
 
   const onSaveClick = async() => {
-    console.log('saving...');
-    console.log(addition);
     const post = await axios.post(`http://localhost:8080/movieDB/`, addition);
     if (post) {
       alert('done saving:\n' + addition.name);
@@ -54,10 +52,14 @@ const AddForm = ({ movie }) => {
       }        
     }
 
+    for (let key of keysA) {
+      tmp[key] = addition[key].toString();
+    }
+
     if (titleKey) {
       for (let key of keysA) {
         if (key === titleKey) {
-          tmp[key] = value;
+          tmp[key] = value.toString();
         }        
       }
     }
@@ -92,7 +94,7 @@ const AddForm = ({ movie }) => {
               </div>
 
               <div className="row">  
-                {OneField(half, titles.format, 'dvd', placeholder, onInput)}  
+                {OneField(half, titles.format, placeholder, 'dvd', onInput)}  
                 {OneField(half, titles.sub, placeholder, placeholder, onInput)}             
               </div>
 
