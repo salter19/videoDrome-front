@@ -14,6 +14,9 @@ const AddForm = ({ movie }) => {
     console.log('saving...');
   }
 
+  const onInput = (value, title) => {
+    console.log(title + ' onInput: ' + value);
+  }
   
   return (
     <div className="add-form">
@@ -25,7 +28,7 @@ const AddForm = ({ movie }) => {
             <div className="ui internally celled grid">
 
               <div className="row">
-                {OneField(full, 'Title', placeholder, movie.name)}
+                {OneField(full, 'Title', placeholder, movie.name, onInput)}
               </div>
 
               <div className="row">   
