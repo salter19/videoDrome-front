@@ -28,12 +28,12 @@ const AddForm = ({ movie }) => {
     country: movie.country,
     sub : movie.sub,
     format: movie.format,
-    format2: movie.format,
     actors: movie.actors,
     imdbID: movie.imdbID
   });
 
   const onSaveClick = async() => {
+    console.log(addition)
     const post = await axios.post(`http://localhost:8080/movieDB/`, addition);
     if (post) {
       alert('done saving:\n' + addition.name);
