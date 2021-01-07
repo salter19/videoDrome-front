@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const AddForm = ({ movie }) => {
 
-  const placeholder = ' - ';
+  const placeholder = '-';
   const full = 'sixteen';
   const half = 'eight';
   const titles = {
