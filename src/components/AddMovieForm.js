@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const AddForm = ({ movie }) => {
 
+  console.log(movie)
   const placeholder = '-';
   const full = 'sixteen';
   const half = 'eight';
@@ -33,8 +34,8 @@ const AddForm = ({ movie }) => {
   });
 
   const onSaveClick = async() => {
-    console.log(addition)
-    const post = await axios.post(`http://localhost:8080/movieDB/`, addition);
+    const url_base = `http://localhost:8080/movieDB/`;
+    const post = await axios.post(url_base, addition);
     if (post) {
       alert('done saving:\n' + addition.name);
     };
@@ -53,13 +54,13 @@ const AddForm = ({ movie }) => {
     }
 
     for (let key of keysA) {
-      tmp[key] = addition[key].toString();
+      tmp[key] = addition[key].toString().trim();
     }
 
     if (titleKey) {
       for (let key of keysA) {
         if (key === titleKey) {
-          tmp[key] = value.toString();
+          tmp[key] = value.toString().trim();
         }        
       }
     }

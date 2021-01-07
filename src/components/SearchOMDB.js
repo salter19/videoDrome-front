@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // import AddForm from './AddMovieForm'
 
-const _url = 'http://localhost:8080/movieDB/omdb/' 
+const _url = 'http://localhost:8080/movieDB/omdb/';
 
 const SearchOMDB = ({ adderClick }) => {
 
