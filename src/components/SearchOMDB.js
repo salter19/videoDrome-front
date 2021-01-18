@@ -12,6 +12,15 @@ const SearchOMDB = ({ adderClick }) => {
 
   const onButtonClick = () => {
     (async() => {
+      try {
+        const monkey = await axios.get(`http://localhost:8080/movieDB/${title}/${year}`) 
+        console.log('monkey is real!')
+        console.log(monkey.data)
+        console.log('monkey is out!') 
+      } catch (error) {
+        console.log(error)
+      }
+
       if (title && year) {
         const { data } = await axios.get(`${_url}${title}/${year}`);
         addMovie(data);
