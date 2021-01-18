@@ -13,6 +13,7 @@ const SearchOMDB = ({ adderClick }) => {
   const onButtonClick = () => {
     (async() => {
       try {
+        console.log('monkey is called ' + title)
         const monkey = await axios.get(`http://localhost:8080/movieDB/${title}/${year}`) 
         console.log('monkey is real!')
         console.log(monkey.data)
