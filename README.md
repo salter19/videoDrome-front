@@ -1,2 +1,2 @@
 # videoDrome-front
-Private project, database for movie drome.
+My little project, database for our movies etc., frontend side.
