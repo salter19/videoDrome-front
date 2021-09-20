@@ -10,19 +10,78 @@ const SearchOMDB = ({ adderClick }) => {
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
 
+  const formatTitle = () => {
+    if (title.includes(':')) {
+      const result =  title.split(':')[0];
+      setYear('');
+      return result;
+    };
+    return title;
+  };
+
+  const checMykDB = async (_title) => {
+
+    let result = -1;
+
+    try {      
+      // TODO: how to search by includes this part???
+      result = await axios.get(`http://localhost:8080/movieDB/${_title}/${year}`);
+      return result;
+      
+    } catch (error) {
+      console.log('404 - Not yet on my database.');
+      return result
+    }
+  };
+
+  const addForm = async (_title) => {
+    try {     
+      
+      const { data } = await axios.get(`${_url}${_title}/${year}`);
+      console.log('got this data')
+      console.log(data)
+      openForm(data);
+      
+    } catch (error) {
+      console.log('404 - could not find the movie with title and year.');
+    }
+  };
+
+  const addFormByTitle = async (_title) => {
+    try {
+      const { data } = await axios.get(`${_url}${_title}`);
+      console.log('got this data')
+      console.log(data)
+      openForm(data);
+      
+    } catch (error) {
+      console.log('404 - could not find movie by this title.')
+    }
+  };
+
   const onButtonClick = () => {
     (async() => {
-      if (title && year) {
-        const { data } = await axios.get(`${_url}${title}/${year}`);
-        addMovie(data);
-      } else if (title) {
-        const { data } = await axios.get(`${_url}${title}`);
-        addMovie(data);  
+     try {
+      const movieTitle = formatTitle();
+      console.log(movieTitle);
+      const myMovie = await checMykDB(movieTitle);
+      console.log(myMovie.data);
+
+      if (myMovie === -1) {
+        await addForm(movieTitle);
+      } else if (myMovie.data.length < 1) {
+        await addFormByTitle(movieTitle);
+      } else {
+        console.log(myMovie.data);
       }
+       
+     } catch (error) {
+       console.log('Cannot compute input.')
+     }
     })();
   };
 
-  const addMovie = (data) => {
+  const openForm = (data) => {
     adderClick(data);
   };
 
