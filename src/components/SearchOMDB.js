@@ -19,13 +19,30 @@ const SearchOMDB = ({ adderClick }) => {
     return title;
   };
 
-  const checMykDB = async (_title) => {
+  const checkByTitleFromMyDB = async (_title) => {
 
     let result = -1;
 
     try {      
       // TODO: how to search by includes this part???
-      result = await axios.get(`http://localhost:8080/movieDB/${_title}/${year}`);
+      result = await axios.get(`http://localhost:8080/movieDB/${_title}/`);
+      console.log(`calling DB with ${_title} and ${year}`)
+      return result;
+      
+    } catch (error) {
+      console.log('404 - Not yet on my database.');
+      return result
+    }
+  };
+
+  const checkByTitleAndYearFromMyDB = async (_title, _year) => {
+
+    let result = -1;
+
+    try {      
+      // TODO: how to search by includes this part???
+      result = await axios.get(`http://localhost:8080/movieDB/${_title}/${_year}`);
+      console.log(`calling DB with ${_title} and ${_year}`)
       return result;
       
     } catch (error) {
@@ -61,23 +78,45 @@ const SearchOMDB = ({ adderClick }) => {
 
   const onButtonClick = () => {
     (async() => {
-     try {
-      const movieTitle = formatTitle();
-      console.log(movieTitle);
-      const myMovie = await checMykDB(movieTitle);
-      console.log(myMovie.data);
+      try {
 
-      if (myMovie === -1) {
-        await addForm(movieTitle);
-      } else if (myMovie.data.length < 1) {
-        await addFormByTitle(movieTitle);
-      } else {
-        console.log(myMovie.data);
+        if (title !== '' && year !=='') {
+          const movieTitle = formatTitle();
+          const myMovie = await checkByTitleAndYearFromMyDB(movieTitle, year);
+          console.log(`got this...`);
+          console.log(myMovie.data);
+
+
+          await fillFormAndShow(myMovie, movieTitle);
+
+        } else if (title !== '') {
+          const movieTitle = formatTitle();
+          const myMovie = await checkByTitleFromMyDB(movieTitle);
+          console.log(`got this...`);
+          console.log(myMovie.data);
+
+
+          await fillFormAndShow(myMovie, movieTitle);
+
+        }
+
+
+        
+      } catch (error) {
+        console.log('Cannot compute input.')
       }
-       
-     } catch (error) {
-       console.log('Cannot compute input.')
-     }
+
+      async function fillFormAndShow(myMovie, movieTitle) {
+        if (myMovie === -1) {
+          await addForm(movieTitle);
+          console.log(`moving to movie form -1`);
+        } else if (myMovie.data.length < 1) {
+          await addFormByTitle(movieTitle);
+          console.log(`moving to movie form -1`);
+        } else {
+          console.log(myMovie.data);
+        }
+      }
     })();
   };
 
