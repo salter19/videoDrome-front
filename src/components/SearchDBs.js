@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const _url = 'http://localhost:8080/movieDB/omdb/';
 
-const SearchOMDB = ({ adderClick }) => {
+const SearchDBs = ({ adderClick }) => {
 
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
@@ -174,4 +174,4 @@ const SearchOMDB = ({ adderClick }) => {
 
 };
 
-export default SearchOMDB;
+export default SearchDBs;

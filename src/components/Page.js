@@ -1,6 +1,6 @@
 import './../style/Page.css';
 import React, { useState } from 'react';
-import SearchOMDB from './SearchOMDB';
+import SearchDBs from './SearchDBs';
 import AddMovieForm from './AddMovieForm';
 import Accordion from './Accordion';
 
@@ -42,7 +42,7 @@ const Page = () => {
           <div className="ui horizontal segments">
             <div className="ui segment left">
               <p>left</p>
-              <SearchOMDB adderClick={adderclick} setView={rightside}/>
+              <SearchDBs adderClick={adderclick} setView={rightside}/>
             </div>
 
             <div className="ui segment right">
