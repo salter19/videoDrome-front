@@ -9,6 +9,7 @@ const AddForm = ({ movie }) => {
   const placeholder = '-';
   const full = 'sixteen';
   const half = 'eight';
+  
   const titles = {
     name: 'Title',
     year: 'Release year',
