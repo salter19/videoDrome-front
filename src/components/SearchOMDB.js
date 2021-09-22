@@ -26,7 +26,7 @@ const SearchOMDB = ({ adderClick }) => {
     try {      
       // TODO: how to search by includes this part???
       result = await axios.get(`http://localhost:8080/movieDB/${_title}/`);
-      console.log(`calling DB with ${_title} and ${year}`)
+      console.log(`calling DB with ${_title}`)
       return result;
       
     } catch (error) {
